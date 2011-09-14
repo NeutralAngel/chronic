@@ -75,7 +75,7 @@ module Chronic
     end
 
     def find_current_quarter(md)
-      [:spring, :summer, :autumn, :winter].find do |quarter|
+      [:firstQuarter, :secondQuarter, :thirdQuarter, :fourthQuarter].find do |quarter|
         md.is_between?(QUARTERS[quarter].start, QUARTERS[quarter].end)
       end
     end
