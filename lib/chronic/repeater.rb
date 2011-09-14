@@ -99,7 +99,8 @@ module Chronic
         /^days?$/ => :day,
         /^hours?$/ => :hour,
         /^minutes?$/ => :minute,
-        /^seconds?$/ => :second
+        /^seconds?$/ => :second,
+        /^quarters?$/ => :quarter
       }.each do |item, symbol|
         if item =~ token.word
           klass_name = 'Repeater' + symbol.to_s.capitalize
