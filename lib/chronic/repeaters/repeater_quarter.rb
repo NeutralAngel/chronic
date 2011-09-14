@@ -27,20 +27,20 @@ module Chronic
       direction = pointer == :future ? 1 : -1
 
       today = Chronic.construct(@now.year, @now.month, @now.day)
-      this_ssn = find_current_quarter(MiniDate.from_time(@now))
+      this_quarter = find_current_quarter(MiniDate.from_time(@now))
       case pointer
       when :past
-        this_ssn_start = today + direction * num_seconds_til_start(this_ssn, direction)
-        this_ssn_end = today
+        this_quarter_start = today + direction * num_seconds_til_start(this_quarter, direction)
+        this_quarter_end = today
       when :future
-        this_ssn_start = today + RepeaterDay::DAY_SECONDS
-        this_ssn_end = today + direction * num_seconds_til_end(this_ssn, direction)
+        this_quarter_start = today + RepeaterDay::DAY_SECONDS
+        this_quarter_end = today + direction * num_seconds_til_end(this_quarter, direction)
       when :none
-        this_ssn_start = today + direction * num_seconds_til_start(this_ssn, direction)
-        this_ssn_end = today + direction * num_seconds_til_end(this_ssn, direction)
+        this_quarter_start = today + direction * num_seconds_til_start(this_quarter, direction)
+        this_quarter_end = today + direction * num_seconds_til_end(this_quarter, direction)
       end
 
-      construct_quarter(this_ssn_start, this_ssn_end)
+      construct_quarter(this_quarter_start, this_quarter_end)
     end
 
     def offset(span, amount, pointer)
